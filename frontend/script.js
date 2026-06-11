@@ -214,3 +214,80 @@ fetch("http://127.0.0.1:8000/jobs")
   .catch(error => {
     console.error("Error fetching jobs:", error);
   });
+
+
+const sendBtn = document.getElementById("send-btn");
+const chatInput = document.getElementById("chat-input");
+const chatMessages = document.getElementById("chat-messages");
+
+
+
+sendBtn.addEventListener("click", async () => {
+
+  const message = chatInput.value.trim();
+
+  if (!message) return;
+
+  chatMessages.innerHTML += `
+        <div class="user-msg">${message}</div>
+    `;
+
+  chatInput.value = "";
+
+  try {
+
+    const response = await fetch(
+      "http://127.0.0.1:8000/chat",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: message
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    chatMessages.innerHTML += `
+            <div class="bot-msg">
+                ${data.response}
+            </div>
+        `;
+
+    chatMessages.scrollTop =
+      chatMessages.scrollHeight;
+
+  } catch (err) {
+
+    chatMessages.innerHTML += `
+            <div class="bot-msg">
+                Error connecting to AI assistant.
+            </div>
+        `;
+  }
+});
+const toggle =
+    document.getElementById("chatbot-toggle");
+
+const container =
+    document.getElementById("chatbot-container");
+
+toggle.addEventListener("click", () => {
+
+    if (container.style.display === "flex") {
+
+        container.style.display = "none";
+
+    } else {
+
+        container.style.display = "flex";
+    }
+});
+  
+
+console.log(sendBtn);
+console.log(toggle);
+console.log(container);
