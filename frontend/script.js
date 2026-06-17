@@ -174,6 +174,8 @@ fetch("http://127.0.0.1:8000/jobs")
 
     const container = document.getElementById("jobs-container");
 
+    container.innerHTML = "";
+
     data.forEach(job => {
 
       const card = document.createElement("div");
@@ -182,27 +184,53 @@ fetch("http://127.0.0.1:8000/jobs")
 
       card.innerHTML = `
 
-  <div class="job-top">
+<div class="job-top">
 
-    <div class="job-badge ${job.status === "Open" ? "open" : "closed"}">
-      ${job.status}
+    <div class="job-badge ${job.status.toLowerCase()}">
+        ${job.status}
     </div>
 
     <h4>${job.title}</h4>
 
-  </div>
+</div>
 
-  <div class="job-details">
+<div class="job-details">
+
+    <p><strong>Job Code:</strong> ${job.job_code}</p>
 
     <p>📅 Start Date: ${job.start_date}</p>
 
     <p>⏳ Last Date: ${job.last_date}</p>
 
-  </div>
+    <p>👥 Vacancies: ${job.vacancies}</p>
 
-  <a href="${job.link}" target="_blank" class="job-btn">
-    View Notification
-  </a>
+</div>
+
+<div class="job-actions">
+
+    <a
+        href="${job.advertisement}"
+        target="_blank"
+        class="job-btn"
+    >
+        View Advertisement
+    </a>
+
+    ${
+        job.apply_link
+        ? `
+        <a
+            href="${job.apply_link}"
+            target="_blank"
+            class="job-btn apply-btn"
+        >
+            Apply Now
+        </a>
+        `
+        : ""
+    }
+
+</div>
 
 `;
 

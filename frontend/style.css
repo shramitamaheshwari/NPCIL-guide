@@ -835,7 +835,7 @@ strong { color: var(--white); font-weight: 600; }
 }
 
 .user-msg{
-    background:#00c3ff;
+    background:rgb(0, 77, 130);
     margin:8px 0;
     padding:10px;
     border-radius:12px;
@@ -855,4 +855,37 @@ strong { color: var(--white); font-weight: 600; }
 .chat-input-area input{
     flex:1;
     padding:10px;
+}
+.job-actions{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+    flex-wrap:wrap;
+}
+
+.job-badge{
+    display:inline-block;
+    padding:5px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+}
+
+.job-badge.open{
+    background:#28a745;
+    color:white;
+}
+
+.job-badge.closed{
+    background:#dc3545;
+    color:white;
+}
+
+.job-badge.unknown{
+    background:#6c757d;
+    color:white;
+}
+
+.apply-btn{
+    background:#28a745;
 }
