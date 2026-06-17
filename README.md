@@ -189,4 +189,4 @@ This is an open-source educational project. Feel free to submit issues and pull 
 
 ## 📄 License
 
-This project is for educational purposes. Please refer to NPCIL's official channels for authoritative information.
+This project is for educational purposes. Please refer to NPCIL's official channels for authoritative information.(AQ.Ab8RN6L5avWoPy78BMkB7tRMt2vsoZBw2eGJr03XHfMPXqg9DQ)
